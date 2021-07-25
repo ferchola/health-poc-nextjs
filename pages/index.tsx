@@ -4,7 +4,7 @@ import Navbar from "../components/layout/Navbar";
 import WelcomeCard from "../components/layout/WelcomeCard";
 import Login from "../components/auth/Login";
 
-export const Home = () => {
+export const Index = () => {
   const [showLogin, setShowLogin] = useState(false);
 
   const handleLoginClick = () => {
@@ -23,4 +23,4 @@ export const Home = () => {
   );
 };
 
-export default Home;
+export default Index;

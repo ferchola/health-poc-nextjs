@@ -4,49 +4,20 @@ import { ServerStyleSheets } from "@material-ui/styles";
 
 import theme from "../themes/main";
 
-export default class CustomDocument extends Document<{
-  styleTags: ReactElement[];
-}> {
-  static async getInitialProps(ctx) {
-    const sheets = new ServerStyleSheets();
-    const originalRenderPage = ctx.renderPage;
-
-    ctx.renderPage = () =>
-      originalRenderPage({
-        enhanceApp: (App: React.FC) => (props: unknown) =>
-          sheets.collect(<App {...props} />),
-      });
-
-    const initialProps = await Document.getInitialProps(ctx);
-
-    return {
-      ...initialProps,
-      styles: [
-        ...React.Children.toArray(initialProps.styles),
-        sheets.getStyleElement(),
-      ],
-    };
-  }
-
+export default class MyDocument extends Document {
   render() {
     return (
-      <Html>
+      <Html lang="en">
         <Head>
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
+          <meta name="theme-color" content={theme.palette.primary.main} />
           <link
-            rel="preconnect"
-            href="https://fonts.gstatic.com"
-            crossOrigin="true"
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Lato:300,400,500,700&display=swap"
           />
           <link
             rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800&display=swap"
+            href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400,500,700&display=swap"
           />
-
-          <meta name="application-name" content="Taxi Fleets" />
-          <meta name="description" content="Taxi Fleets" />
-
-          <meta name="theme-color" content={theme.palette.primary.main} />
         </Head>
         <body>
           <Main />
@@ -56,3 +27,23 @@ export default class CustomDocument extends Document<{
     );
   }
 }
+
+MyDocument.getInitialProps = async (ctx) => {
+  const sheets = new ServerStyleSheets();
+  const originalRenderPage = ctx.renderPage;
+
+  ctx.renderPage = () =>
+    originalRenderPage({
+      enhanceApp: (App) => (props) => sheets.collect(<App {...props} />),
+    });
+
+  const initialProps = await Document.getInitialProps(ctx);
+
+  return {
+    ...initialProps,
+    styles: [
+      ...React.Children.toArray(initialProps.styles),
+      sheets.getStyleElement(),
+    ],
+  };
+};

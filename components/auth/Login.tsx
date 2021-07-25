@@ -7,44 +7,28 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
+import { makeStyles } from "@material-ui/styles";
 
 const Login = (props: LoginProps) => {
-  const paperStyle = {
-    padding: 20,
-    height: "50vh",
-    width: 280,
-    margin: "20px auto",
-  };
-
-  const avatarStyle = {
-    backgroundColor: "#05b0a7",
-    margin: "20px auto",
-  };
-
-  const btnStyle = {
-    margin: "8px 0",
-  };
-
-  const typographyStyle = {
-    margin: "0 90px",
-  };
+  const classes = useStyles();
 
   if (props.isLoginVisible) {
     return (
       <Grid>
-        <Paper elevation={10} style={paperStyle}>
+        <Paper elevation={10} className={classes.card}>
           <Grid alignItems="center">
-            <Avatar style={avatarStyle}>
+            <Avatar className={classes.avatar}>
               <LockOutlinedIcon />
             </Avatar>
-            <Typography style={typographyStyle}>
-              <h2>Ingresar</h2>
+            <Typography className={classes.typography} variant="h5">
+              Ingresar
             </Typography>
           </Grid>
           <TextField
             id="username"
             label="Nombre de usuario"
             placeholder="Ingrese su usuario"
+            variant="standard"
             fullWidth
             required
           />
@@ -53,6 +37,7 @@ const Login = (props: LoginProps) => {
             label="Contraseña"
             placeholder="Ingrese su contraseña"
             type="password"
+            variant="standard"
             fullWidth
             required
           />
@@ -66,17 +51,22 @@ const Login = (props: LoginProps) => {
             type="submit"
             variant="contained"
             color="primary"
-            style={btnStyle}
+            className={classes.btn}
             fullWidth
           >
             Ingresar
           </Button>
           <Typography>
-            <Link href="#">Olvidé mi contraseña</Link>
+            <Link href="#" variant="subtitle1">
+              Olvidé mi contraseña
+            </Link>
           </Typography>
           <Typography>
             Aún no tienes cuenta?
-            <Link href="#"> Regístrate!</Link>
+            <Link href="#" variant="subtitle2">
+              {" "}
+              Regístrate!
+            </Link>
           </Typography>
         </Paper>
       </Grid>
@@ -87,5 +77,24 @@ const Login = (props: LoginProps) => {
 type LoginProps = {
   isLoginVisible: boolean;
 };
+
+const useStyles = makeStyles({
+  card: {
+    padding: 20,
+    height: "50vh",
+    width: 280,
+    margin: "20px auto",
+  },
+  avatar: {
+    backgroundColor: "#05b0a7",
+    margin: "20px auto",
+  },
+  typography: {
+    margin: "0 80px",
+  },
+  btn: {
+    margin: "8px 0",
+  },
+});
 
 export default Login;
