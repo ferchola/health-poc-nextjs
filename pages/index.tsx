@@ -7,9 +7,9 @@ import Login from "../components/auth/Login";
 export const Home = () => {
   const [showLogin, setShowLogin] = useState(false);
 
-  const handleLoginClick = useCallback(() => {
+  const handleLoginClick = () => {
     setShowLogin(true);
-  }, []);
+  };
 
   return (
     <div>
