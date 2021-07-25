@@ -11,8 +11,11 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormGroup from "@material-ui/core/FormGroup";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
+import { makeStyles } from "@material-ui/styles";
 
 const Navbar = (props: NavBarProps) => {
+  const classes = useStyles();
+
   const [showLogin, setShowLogin] = useState(false);
 
   const [auth, setAuth] = React.useState(true);
@@ -48,7 +51,7 @@ const Navbar = (props: NavBarProps) => {
           label={auth ? "Logout" : "Login"}
         />
       </FormGroup>
-      <AppBar position="static">
+      <AppBar position="static" className={classes.root}>
         <Toolbar>
           <IconButton
             size="large"
@@ -103,5 +106,11 @@ const Navbar = (props: NavBarProps) => {
 type NavBarProps = {
   onLoginClick: (isVisible: boolean) => void;
 };
+
+const useStyles = makeStyles({
+  root: {
+    backgroundColor: "#05b0a7",
+  },
+});
 
 export default Navbar;
