@@ -8,46 +8,40 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/styles";
 
-const WelcomeCard = (props: WelcomeCardProps) => {
+const WelcomeCard = () => {
   const classes = useStyles();
 
-  if (!props.isLoginVisible) {
-    return (
-      <Card className={classes.root}>
-        <CardActionArea>
-          <CardMedia
-            component="img"
-            alt="random img"
-            height="140"
-            image="https://picsum.photos/200/300"
-            title="random img"
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-              Mi Salud
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              Bienvenido a su app de Mi Salud, donde usted podrá auto
-              gestionarse para agendar turnos, ver resultados de exámenes,
-              conversar con su médico y muchas cosas más!
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-        <CardActions>
-          <Button variant="text" color="primary">
-            COVID-19
-          </Button>
-          <Button variant="text" color="primary">
-            Ayuda
-          </Button>
-        </CardActions>
-      </Card>
-    );
-  } else return <div></div>;
-};
-
-type WelcomeCardProps = {
-  isLoginVisible: boolean;
+  return (
+    <Card className={classes.root}>
+      <CardActionArea>
+        <CardMedia
+          component="img"
+          alt="random img"
+          height="140"
+          image="https://picsum.photos/200/300"
+          title="random img"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+            Mi Salud
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            Bienvenido a su app de Mi Salud, donde usted podrá auto gestionarse
+            para agendar turnos, ver resultados de exámenes, conversar con su
+            médico y muchas cosas más!
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      <CardActions>
+        <Button variant="text" color="primary">
+          COVID-19
+        </Button>
+        <Button variant="text" color="primary">
+          Ayuda
+        </Button>
+      </CardActions>
+    </Card>
+  );
 };
 
 const useStyles = makeStyles({

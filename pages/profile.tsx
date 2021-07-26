@@ -4,12 +4,14 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/styles";
 import { deepOrange } from "@material-ui/core/colors";
+import Navbar from "../components/layout/Navbar";
 
-const Profile = (props: ProfileProps) => {
+export const Profile = () => {
   const classes = useStyles();
 
-  if (props.isProfileVisible) {
-    return (
+  return (
+    <div>
+      <Navbar />
       <Grid>
         <Paper elevation={10} className={classes.card}>
           <Avatar className={classes.avatar} sx={{ bgcolor: deepOrange[500] }}>
@@ -36,8 +38,8 @@ const Profile = (props: ProfileProps) => {
           </Button>
         </Paper>
       </Grid>
-    );
-  } else return <div></div>;
+    </div>
+  );
 };
 
 const useStyles = makeStyles({
@@ -58,7 +60,4 @@ const useStyles = makeStyles({
   },
 });
 
-type ProfileProps = {
-  isProfileVisible: boolean;
-};
 export default Profile;

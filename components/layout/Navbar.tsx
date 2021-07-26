@@ -11,12 +11,13 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormGroup from "@material-ui/core/FormGroup";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
+import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/styles";
+import { useRouter } from "next/router";
 
-const Navbar = (props: NavBarProps) => {
+const Navbar = () => {
   const classes = useStyles();
-
-  const [showLogin, setShowLogin] = useState(false);
+  const router = useRouter();
 
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -27,12 +28,12 @@ const Navbar = (props: NavBarProps) => {
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
+    // router.push("/index");
   };
 
   const handleClose = () => {
     setAnchorEl(null);
-    setShowLogin(true);
-    props.onLoginClick(true);
+    router.push("/login");
   };
 
   return (
@@ -61,7 +62,9 @@ const Navbar = (props: NavBarProps) => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Mi portal de salud
+            <Link href="/" underline="hover" color="inherit">
+              {"Mi Portal de salud"}
+            </Link>{" "}
           </Typography>
           {auth && (
             <div>

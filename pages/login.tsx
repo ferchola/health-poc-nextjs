@@ -1,4 +1,5 @@
 import React from "react";
+import { useRouter } from "next/router";
 import { Grid, Paper, Avatar } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import TextField from "@material-ui/core/TextField";
@@ -8,12 +9,15 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/styles";
+import Navbar from "../components/layout/Navbar";
 
-const Login = (props: LoginProps) => {
+const Login = () => {
   const classes = useStyles();
+  const router = useRouter();
 
-  if (props.isLoginVisible) {
-    return (
+  return (
+    <div>
+      <Navbar />
       <Grid>
         <Paper elevation={10} className={classes.card}>
           <Grid alignItems="center">
@@ -53,7 +57,7 @@ const Login = (props: LoginProps) => {
             color="primary"
             className={classes.btn}
             fullWidth
-            onClick={() => props.onLoginClick(true)}
+            onClick={() => router.push("/profile")}
           >
             Ingresar
           </Button>
@@ -71,13 +75,8 @@ const Login = (props: LoginProps) => {
           </Typography>
         </Paper>
       </Grid>
-    );
-  } else return <div></div>;
-};
-
-type LoginProps = {
-  isLoginVisible: boolean;
-  onLoginClick: (isProfileVisible: boolean) => void;
+    </div>
+  );
 };
 
 const useStyles = makeStyles({
