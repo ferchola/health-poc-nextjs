@@ -53,6 +53,7 @@ const Login = (props: LoginProps) => {
             color="primary"
             className={classes.btn}
             fullWidth
+            onClick={() => props.onLoginClick(true)}
           >
             Ingresar
           </Button>
@@ -76,6 +77,7 @@ const Login = (props: LoginProps) => {
 
 type LoginProps = {
   isLoginVisible: boolean;
+  onLoginClick: (isProfileVisible: boolean) => void;
 };
 
 const useStyles = makeStyles({

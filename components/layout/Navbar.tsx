@@ -23,8 +23,6 @@ const Navbar = (props: NavBarProps) => {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setAuth(event.target.checked);
-    setShowLogin(false);
-    props.onLoginClick(false);
   };
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -92,8 +90,8 @@ const Navbar = (props: NavBarProps) => {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <MenuItem onClick={handleClose}>Mi perfil</MenuItem>
+                <MenuItem onClick={handleClose}>Mi cuenta</MenuItem>
               </Menu>
             </div>
           )}
